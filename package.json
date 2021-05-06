@@ -1,8 +1,36 @@
 {
+  "name": "library",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: Error\" && exit 1",
+    "start": "set DEBUG=app & nodemon app.js",
+    "lint": "eslint app.js"
+  },
   "dependencies": {
+    "bootstrap": "^5.0.0",
     "chalk": "^4.1.1",
     "debug": "^2.6.9",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "jquery": "^3.6.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "nodemonConfig":{
+    "restartable":"rs",
+    "ignore":["node_modules/**/node_modules"],
+    "delay": "2500",
+    "env":{
+      "NODE_ENV":"development",
+      "PORT":3000
+    }
   }
 }
