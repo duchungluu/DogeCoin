@@ -1,7 +1,10 @@
 html 
     head 
         title Louis!!! 
-    body    
-        h1 DogeCoin 
+    body(class=["myClass"])
+        h1(id='MyId') Library
         p   
             h3 Trade here
+        ul 
+            each val in list 
+                li= val
