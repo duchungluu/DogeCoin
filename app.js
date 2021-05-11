@@ -17,7 +17,14 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index', { list:['Etherium', 'DogeCoin'], title: 'To The MOON' });
+  res.render(
+    'index', 
+    {
+      nav:[{ link: /'coins', title: 'Etherium', 'DogeCoin'},
+        {link: /'platforms', title: 'Doggo'}], 
+      title: 'To The MOON' 
+    }
+    );
 });
 
 app.listen(3000, () => {

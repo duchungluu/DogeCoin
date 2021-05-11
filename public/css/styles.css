@@ -2,7 +2,7 @@
 @import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
 
 .navbar-form input, .form-inline input {
-  width:auto;
+  width:50px;
 }
 
 body {
@@ -105,6 +105,14 @@ a,a:hover {
 
 .caret {
   color:#fff;
+}
+
+.navbar-nav {
+  display: fixed;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 }
 
 .navbar-toggle {
