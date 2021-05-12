@@ -7,7 +7,7 @@ const path = require('path');
 
 const app = express();
 const port= process.env.PORT || 3000;
-const coinRouter = require('./src/routes/coinRoutes');
+
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -18,17 +18,20 @@ app.set('views', './src/views');
 //app.set('view engine', 'pug');
 app.set('view engine', 'ejs');
 
+const nav = [
+  { link: '/coins', title: 'Coin'},
+  {link: '/platforms', title: 'Platform'}
+];
 
+const coinRouter = require('./src/routes/coinRoutes')(nav);
 
 app.use('/coins', coinRouter);
-
 
 app.get('/', (req, res) => {
   res.render(
     'index', 
     {
-      nav:[{ link: '/coins', title: 'Coins'},
-        {link: '/platforms', title: 'Platforms'}], 
+      nav, 
       title: 'To The MOON' 
     }
     );

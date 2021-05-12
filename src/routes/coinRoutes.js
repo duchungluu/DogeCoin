@@ -1,7 +1,8 @@
 const express = require('express');
 const coinRouter = express.Router();
 
-const coins = [
+function router(nav){
+  const coins = [
     {
       title: 'Bitoin',
       genre: 'crypto',
@@ -18,19 +19,29 @@ const coins = [
   coinRouter.route('/')
     .get((req,res) => {
       res.render(
-        'coins',
+        'coinListView',
         {
-          nav:[{ link: '/coins', title: 'Coins'},
-            {link: '/platforms', title: 'Platforms'}], 
+          nav, 
           title: 'To The MOON' ,
           coins
         }
         );
     });
   
-  coinRouter.route('/Doge')
+  coinRouter.route('/:id')
     .get((req,res) => {
-      res.send('All in Doge');
+ //  const id = req.params.id;  SAME AS BELOW
+     const { id } = req.params;
+      res.render(
+        'coinView',
+        {
+          nav, 
+          title: 'To The MOON' ,
+          coin: coins[id]
+        }
+        );
     });
+    return coinRouter
+}
 
-    module.exports = coinRouter;
+    module.exports = router;
