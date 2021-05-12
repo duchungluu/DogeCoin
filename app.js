@@ -4,8 +4,10 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 
+
 const app = express();
 const port= process.env.PORT || 3000;
+const coinRouter = require('./src/routes/coinRoutes');
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -16,12 +18,17 @@ app.set('views', './src/views');
 //app.set('view engine', 'pug');
 app.set('view engine', 'ejs');
 
+
+
+app.use('/coins', coinRouter);
+
+
 app.get('/', (req, res) => {
   res.render(
     'index', 
     {
-      nav:[{ link: /'coins', title: 'Etherium', 'DogeCoin'},
-        {link: /'platforms', title: 'Doggo'}], 
+      nav:[{ link: '/coins', title: 'Coins'},
+        {link: '/platforms', title: 'Platforms'}], 
       title: 'To The MOON' 
     }
     );
